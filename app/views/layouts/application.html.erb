@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FlightBooker</title>
+    <title>Flight Booker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,42 @@
   </head>
 
   <body>
+   <%# This is the website header bar  %>
+    <nav class="navbar is-light">
+      <div class="navbar-brand">    
+        <%= link_to root_path, class: "navbar-item" do %>
+          <h1 class='title is-5'>Flight Booker</h1>
+        <% end %>
+      </div>
+
+      
+        
+      <div class="navbar-item">          
+        <div class='field is-grouped'>
+            <p class='control'>
+              <%= link_to 'Search Bookings', root_path, class: 'navbar-item' %>
+            </p>
+            <p class='control'>
+              <%= link_to 'About', root_path, class: 'navbar-item' %>
+            </p>
+        </div>
+      </div>
+        
+     
+    </nav>
+
+    <%# flashes %>
+    <% if flash[:notice] %>
+      <div class="notification is-primary global-notification is-light">      
+        <p class="notice "><%= notice %></p> 
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class='notification is-danger global-notification is-light'>
+        <p class='alert'><%= alert %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
