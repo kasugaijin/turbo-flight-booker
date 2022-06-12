@@ -3,7 +3,7 @@
 
 <%= form_with url: '/', method: :get do | f | %>
   <%= f.label :dept_airport_id, 'From' %>
-  <%= f.select(:dept_airport_id, @dept_airport_options) %>
+  <%= f.collection_select :dept_airport_id, Airport.order(:name), :id, :name %>
   <%= f.label :arr_airport_id, 'To' %>
   <%= f.select(:arr_airport_id, @arr_airport_options) %>
   <%= f.label :passengers, 'Passengers' %>
