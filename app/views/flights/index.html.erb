@@ -1,15 +1,13 @@
 
-
-
 <%= form_with url: '/', method: :get do | f | %>
   <%= f.label :dept_airport_id, 'From' %>
   <%= f.collection_select :dept_airport_id, @airport_names, :id, :name, { prompt: 'Depart' }%>
   <%= f.label :arr_airport_id, 'To' %>
   <%= f.collection_select :arr_airport_id, @airport_names, :id, :name, { prompt: "Arrive" } %>
   <%= f.label :passengers, 'Passengers' %>
-  <%= f.select :passengers, [1, 2, 3, 4] %>
+  <%= f.select :passengers, [1, 2, 3, 4], { prompt: "Passengers" } %>
   <%= f.label :date, 'Date' %>
-  <%= f.select(:date, @dates) %>
+  <%= f.select :date, @dates, { prompt: "Date" } %>
   <%= f.submit 'Search' %>
 <% end %>
 
@@ -19,9 +17,14 @@
 <%# collection_select :params_key, [AR relation], :params_key_value, :display_value %>
 <%# use select for dates as we can pass that value straight into the params %>
 
-<% @flight_options.each do |flight| %>
-  <p>Departing from: <%= flight.dept_airport.name%></p>
-  <p>Arriving at: <%= flight.arr_airport.name%></p>
-  <p>Departure date: <%= flight.date%></p>
-  <p>Departure time: <%= flight.time%></p>
+<% unless @flight_options.nil? %>
+    <% @flight_options.each do |flight| %>
+      <p>Departing from: <%= flight.dept_airport.name%></p>
+      <p>Arriving at: <%= flight.arr_airport.name%></p>
+      <p>Departure date: <%= flight.date%></p>
+      <p>Departure time: <%= flight.time%></p>
+    <% end %>
+    <p>No flights found.</p>
+  <% else %>
+  <p>Search for a new flight</p>
 <% end %>
