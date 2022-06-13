@@ -1,12 +1,14 @@
 class FlightsController < ApplicationController
 
   def index
-    @flights = Flight.all
     @airport_names = Airport.order(:name)
     @dates = Flight.all.map { |flight| flight.date }.uniq
-    
 
-# show flights that meet params ie after form submitted else blank
+    return if params[:arr_airport_id].nil?
+
+    @flight_options = Flight.where(dept_airport_id: params[:dept_airport_id],
+                                   arr_airport_id: params[:arr_airport_id],
+                                   date: Date.parse(params[:date]))
   end
 
 end
