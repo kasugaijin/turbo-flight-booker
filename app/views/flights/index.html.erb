@@ -3,9 +3,9 @@
 
 <%= form_with url: '/', method: :get do | f | %>
   <%= f.label :dept_airport_id, 'From' %>
-  <%= f.collection_select :dept_airport_id, Airport.order(:name), :id, :name %>
+  <%= f.collection_select :dept_airport_id, @airport_names, :id, :name %>
   <%= f.label :arr_airport_id, 'To' %>
-  <%= f.select(:arr_airport_id, @arr_airport_options) %>
+  <%= f.collection_select :arr_airport_id, @airport_names, :id, :name %>
   <%= f.label :passengers, 'Passengers' %>
   <%= f.select :passengers, [1, 2, 3, 4] %>
   <%= f.label :date_time, 'Date' %>
@@ -13,6 +13,8 @@
   <%= f.submit 'Search' %>
 <% end %>
 
-<%# f.select is providing a selection of values from the @dept_airport_options array in flights_controller %>
-<%# A dropdown of values that pass to params key can also be defined using:  %>
-<%# <%= select_tag(:author_id, options_for_select(@dept_airport_options)) %>
+<%# Use collection_select to show one value in dropdown and pass another to params hash %>
+<%# @airport_names is defined in the flights_controller and provides the AR relation to %>
+<%# pull the :id and :name from %>
+<%# collection_select :params_key, [AR relation], :params_key_value, :display_value %>
+
