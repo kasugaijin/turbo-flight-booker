@@ -10,7 +10,8 @@ class FlightsController < ApplicationController
     return unless params[:date].present? &&
                   params[:dept_airport_id].present? &&
                   params[:arr_airport_id].present? &&
-                  params[:passengers].present?
+                  params[:passengers].present? &&
+                  params[:dept_airport_id] != params[:arr_airport_id]
 
       Flight.where(dept_airport_id: params[:dept_airport_id],
                                     arr_airport_id: params[:arr_airport_id],

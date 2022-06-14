@@ -24,8 +24,8 @@
       <p>Arriving at: <%= flight.arr_airport.name%></p>
       <p>Departure date: <%= flight.date%></p>
       <p>Departure time: <%= flight.time%></p>
+      <%= link_to 'Select', new_booking_path(:flight_id => flight.id, :passengers => params[:passengers])  %>
     <% end %>
-    <p>No flights found.</p>
   <% else %>
   <p>Search for a new flight</p>
 <% end %>
