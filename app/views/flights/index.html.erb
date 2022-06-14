@@ -17,6 +17,7 @@
 <%# collection_select :params_key, [AR relation], :params_key_value, :display_value %>
 <%# use select for dates as we can pass that value straight into the params %>
 
+<%# @flight_options is nil when all params are not present. Only display results table when not nil %>
 <% unless @flight_options.nil? %>
     <% @flight_options.each do |flight| %>
       <p>Departing from: <%= flight.dept_airport.name%></p>
