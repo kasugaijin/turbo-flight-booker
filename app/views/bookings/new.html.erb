@@ -1,1 +1,15 @@
-<h1>New Booking Page</h1>
+<h1>Passenger details</h1>
+<p>From: <%= @flight_details.dept_airport.name %></p>
+<p>To: <%= @flight_details.arr_airport.name %></p>
+<p>Date: <%= @flight_details.date %></p>
+<p>Time: <%= @flight_details.time %></p>
+<p>Duration: <%= @flight_details.duration %> min</p>
+
+<p>Enter passenger details below</p>
+<% i = 1 %>
+<% while i <= params[:passengers].to_i do %>
+  <p><%= i %></p>
+  <p>Name</p>
+  <p>Email</p>
+  <% i += 1 %>
+<%end %>

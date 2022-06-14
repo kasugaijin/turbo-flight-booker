@@ -15,7 +15,7 @@
 <%# @airport_names is defined in the flights_controller and provides the AR relation to %>
 <%# pull the :id and :name from %>
 <%# collection_select :params_key, [AR relation], :params_key_value, :display_value %>
-<%# use select for dates as we can pass that value straight into the params %>
+<%# use select for values you want to pass straight into the params %>
 
 <%# @flight_options is nil when all params are not present. Only display results table when not nil %>
 <% unless @flight_options.nil? %>
@@ -24,7 +24,8 @@
       <p>Arriving at: <%= flight.arr_airport.name%></p>
       <p>Departure date: <%= flight.date%></p>
       <p>Departure time: <%= flight.time%></p>
-      <%= link_to 'Select', new_booking_path(:flight_id => flight.id, :passengers => params[:passengers])  %>
+      <%= link_to 'Select', new_booking_path(:flight_id => flight.id, 
+                                             :passengers => params[:passengers]) %>
     <% end %>
   <% else %>
   <p>Search for a new flight</p>
