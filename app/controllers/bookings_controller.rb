@@ -7,8 +7,9 @@ class BookingsController < ApplicationController
   end
 
   def create
-    unless Booking.where(booking_reference: params[:booking][:booking_reference]).exists?
-      
+    if Booking.where(booking_reference: params[:booking][:booking_reference]).exists?
+      create_error
+    else
       @booking = Booking.create(booking_params)
       if @booking.save
         flash.notice = 'Booking Saved!'
@@ -17,7 +18,6 @@ class BookingsController < ApplicationController
         create_error
       end
     end
-    create_error
   end
 
   def show

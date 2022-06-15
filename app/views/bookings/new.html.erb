@@ -7,8 +7,7 @@
 
 <%= form_with model: @booking do |f| %>
   <%= f.hidden_field :flight_id, value: params[:flight_id] %>
-  <%# <%= f.hidden_field :passengers, value: params[:passengers] %>
-  <%= f.hidden_field :booking_reference, value: 'AAAA4' %> 
+  <%= f.hidden_field :booking_reference, value: 'AAAA6' %> 
   <p>Enter passenger details below</p>
 
   <%= f.fields_for :passengers do |passenger_form| %>
