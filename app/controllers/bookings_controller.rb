@@ -7,7 +7,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.create(booking_params)
+    
+    if @booking.save
+      flash.notice = 'saved'
+      redirect_to root_path
+    else
+      flash.alert = 'error'
+    end
   end
 
   def show
@@ -17,7 +24,9 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:flight_id, passengers_attributes: [:id, :name, :email])
+    params.require(:booking).permit(:flight_id,
+                                    # :passengers,
+                                    :booking_reference,
+                                    passengers_attributes: [:id, :name, :email] )
   end
-
 end

@@ -6,14 +6,19 @@
 <p>Duration: <%= @flight_details.duration %> min</p>
 
 <%= form_with model: @booking do |f| %>
+  <%= f.hidden_field :flight_id, value: params[:flight_id] %>
+  <%# <%= f.hidden_field :passengers, value: params[:passengers] %>
+  <%= f.hidden_field :booking_reference, value: 'AAAA3' %> 
   <p>Enter passenger details below</p>
+
   <%= f.fields_for :passengers do |passenger_form| %>
       <%= passenger_form.label :name %>
       <%= passenger_form.text_field :name%>
       <%= passenger_form.label :email %>
-      <%= passenger_form.email_field :name%>
+      <%= passenger_form.email_field :email%>
   <% end %>
-<% f.hidden_field :flight_id, params[:flight_id] %>
-<% f.hidden_field :passengers, params[:passengers] %>
+
   <%= f.submit 'Submit' %>
 <% end %>
+
+<%= params %>
