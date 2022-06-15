@@ -4,6 +4,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @flight_details = Flight.find_by(params[:flight_id])
     params[:passengers].to_i.times { @booking.passengers.build }
+
+    @booking_reference = booking_ref_generator
   end
 
   def create
@@ -37,5 +39,9 @@ class BookingsController < ApplicationController
   def create_error
     flash.alert = 'Error - please try again.'
     redirect_to root_path
+  end
+
+  def booking_ref_generator
+    SecureRandom.hex(3).upcase
   end
 end

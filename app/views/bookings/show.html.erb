@@ -3,6 +3,7 @@
 <%= @booking.id %>
 <%= @booking.booking_reference %>
 
+<%# Loop over Active Record Relation is acceptable here as the relation is always small? %>
 <% i = 0 %>
 <% while i < @passengers.length do %>
   <%= @passengers[i].name %>
