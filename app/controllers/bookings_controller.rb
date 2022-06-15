@@ -28,6 +28,14 @@ class BookingsController < ApplicationController
     @passengers = Passenger.where(booking_id: @booking.id)
   end
 
+  def search
+    unless params[:search].blank?
+
+      @booking = Booking.where(booking_reference: params[:search].upcase)[0]
+      redirect_to @booking
+    end
+  end
+
   private
 
   def booking_params

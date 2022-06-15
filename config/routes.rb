@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'flights#index'
   resources :bookings
+  get '/search', to: 'bookings#search'
+
 end
