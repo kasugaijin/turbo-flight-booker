@@ -1,2 +1,11 @@
-<h1>Show Booking Page</h1>
+<h1>Reservation</h1>
+<%= @flight.dept_airport.name %>
 <%= @booking.id %>
+<%= @booking.booking_reference %>
+
+<% i = 0 %>
+<% while i < @passengers.length do %>
+  <%= @passengers[i].name %>
+  <%= @passengers[i].email %>
+<% i += 1%>
+<% end %>

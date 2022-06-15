@@ -1,4 +1,4 @@
-<h1>Booking details</h1>
+<h1>Reservation Details</h1>
 <p>From: <%= @flight_details.dept_airport.name %></p>
 <p>To: <%= @flight_details.arr_airport.name %></p>
 <p>Date: <%= @flight_details.date %></p>
@@ -7,7 +7,7 @@
 
 <%= form_with model: @booking do |f| %>
   <%= f.hidden_field :flight_id, value: params[:flight_id] %>
-  <%= f.hidden_field :booking_reference, value: 'AAAA6' %> 
+  <%= f.hidden_field :booking_reference, value: 'AAAA7' %> 
   <p>Enter passenger details below</p>
 
   <%= f.fields_for :passengers do |passenger_form| %>

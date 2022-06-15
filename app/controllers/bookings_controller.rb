@@ -22,13 +22,14 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @flight = Flight.find(@booking.flight_id)
+    @passengers = Passenger.where(booking_id: @booking.id)
   end
 
   private
 
   def booking_params
     params.require(:booking).permit(:flight_id,
-                                    # :passengers,
                                     :booking_reference,
                                     passengers_attributes: [:id, :name, :email] )
   end
