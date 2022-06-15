@@ -7,14 +7,17 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.create(booking_params)
-    
-    if @booking.save
-      flash.notice = 'saved'
-      redirect_to root_path
-    else
-      flash.alert = 'error'
+    unless Booking.where(booking_reference: params[:booking][:booking_reference]).exists?
+      
+      @booking = Booking.create(booking_params)
+      if @booking.save
+        flash.notice = 'Booking Saved!'
+        redirect_to @booking
+      else
+        create_error
+      end
     end
+    create_error
   end
 
   def show
@@ -28,5 +31,10 @@ class BookingsController < ApplicationController
                                     # :passengers,
                                     :booking_reference,
                                     passengers_attributes: [:id, :name, :email] )
+  end
+
+  def create_error
+    flash.alert = 'Error - please try again.'
+    redirect_to root_path
   end
 end

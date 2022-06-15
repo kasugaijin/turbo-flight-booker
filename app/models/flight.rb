@@ -4,6 +4,6 @@ class Flight < ApplicationRecord
   belongs_to :arr_airport, class_name: 'Airport'
 
   has_many :bookings
-  has_many :passengers, through: :bookings, inverse_of: :flight
+  has_many :passengers, through: :bookings, inverse_of: :flights
 
 end
