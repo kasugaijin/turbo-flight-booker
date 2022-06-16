@@ -29,11 +29,26 @@ class BookingsController < ApplicationController
   end
 
   def search
-    unless params[:search].blank?
+    return if params[:search].blank?
 
-      @booking = Booking.where(booking_reference: params[:search].upcase)[0]
+    @booking = Booking.where(booking_reference: params[:search].upcase)[0]
+
+    if @booking.nil?
+      flash.alert = 'Booking does not exist'
+      redirect_to search_path
+    else
       redirect_to @booking
     end
+  end
+
+  def destroy
+    @booking = Booking.find_by(params[:id])
+    if @booking.destroy
+      flash.notice = 'Reservation cancelled.'
+    else
+      flash.alert = 'Error - reservation was not cancelled'
+    end
+    redirect_to root_path, status: :see_other
   end
 
   private

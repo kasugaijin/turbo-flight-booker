@@ -10,3 +10,6 @@
   <%= @passengers[i].email %>
 <% i += 1%>
 <% end %>
+
+<%= link_to 'Cancel Reservation', booking_path(@booking), data: {turbo_method: :delete,
+                                                                turbo_confirm: 'Click OK to confirm.' }%>
