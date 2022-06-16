@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     else
       @booking = Booking.create(booking_params)
       if @booking.save
-        flash.notice = 'Booking Saved!'
+        flash.notice = 'Reservation Saved!'
         redirect_to @booking
       else
         create_error
@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
     @booking = Booking.where(booking_reference: params[:search].upcase)[0]
 
     if @booking.nil?
-      flash.alert = 'Booking does not exist'
+      flash.alert = 'Reservation does not exist'
       redirect_to search_path
     else
       redirect_to @booking

@@ -15,3 +15,23 @@
  */
 
  @import 'bulma';
+
+ .submit {
+   display: flex;
+ }
+
+ .search-button {
+   margin-top: auto;
+ }
+
+ .result-col {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+ }
+
+ .result > p {
+   font-weight: bold;
+ }
+
+ 

@@ -1,0 +1,46 @@
+<%# @flight_options is nil when all params are not present. Only display results table when not nil %>
+
+<div class="column is-half">
+  <div class="box">
+    <% unless @flight_options.nil? %>
+      <% @flight_options.each do |flight| %>
+
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <div class='result-col'>
+              <div class="result">
+                <p>Departing</p>
+                <%= flight.dept_airport.name%>
+              </div>
+
+              <div class="result">
+                <p>Arriving</p>
+                <%= flight.arr_airport.name%>
+              </div>
+
+              <div class="result">
+                <p>Date</p>
+                <%= flight.date%>
+              </div>
+
+              <div class="result">
+                <p>Take-off</p>
+                <%= flight.time%>
+              </div>
+
+              <div class="result">
+                  <%= link_to 'Select', new_booking_path(:flight_id => flight.id, 
+                                                        :passengers => params[:passengers]), 
+                                                        class: 'button is-info' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <% end %>
+    <% else %>
+      <p>Please make a new search</p>
+    <% end %>
+  </div>
+</div>
