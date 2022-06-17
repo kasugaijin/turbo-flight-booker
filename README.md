@@ -1,11 +1,11 @@
 # README
 
-This Ruby on Rails application is a 'flight booker' that uses advanced forms to work with multiple models simultaneously and allow a user to book a flight.
+This Ruby on Rails application is a flight reservation system that uses advanced forms to work with multiple models simultaneously and allow a user to book a flight.
 
 There are four models:
 - Airport
 - Flight
-- Booking
+- Booking (called reservation in the UI)
 - Passenger
 
 In the database, the Bookings Table is a through table for Flights and Passengers to allow for 'has_many' relationships between the two. Data were seeded in the database using seeds.rb. The range of airports and flight offerings was kept minimal for the sake of this 'toy' application, and the date drop-downs in the first form are fixed because the flight dates are static.
@@ -14,6 +14,14 @@ Form 1: Choose departing/arrival airports and desired date, and number of passen
 Form 2: Select the preferred available flight
 Form 3: Enter passenger information
 
+Improvements
+User feedback when filling in forms would be improved through the use of javascript to ensure fields were filled in appropriately. Currently, this app relies on validations on the server side, which requires a click, a page load, and time to provide a generic response to the user. Using javascript would enable real-time feedback without the need for any button clicks or page loads.
+
+View Live: 
+
+
+Screenshot:
+![Screenshot](./screenshot.png?raw=true "")
 
 
 
