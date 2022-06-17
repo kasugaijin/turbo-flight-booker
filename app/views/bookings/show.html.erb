@@ -11,23 +11,22 @@
             </div>
             <p class="has-text-weight-semibold">Passengers</p>
             <%# Loop over Active Record Relation is acceptable here as the relation is always small? %>
-            <div class='is-flex mb-2'>
             <% i = 0 %>
             <% while i < @passengers.length do %>
-              <p class='mr-1'><%= i + 1 %>. </p>
-              <p class='mr-3'><%= @passengers[i].name %>, </p>
-              <p><%= @passengers[i].email %> </p>
+              <div class='is-flex mb-2'>
+                <p class='mr-1'><%= i + 1 %>. </p>
+                <p class='mr-3'><%= @passengers[i].name %>, </p>
+                <p><%= @passengers[i].email %> </p>
+              </div>
             <% i += 1%>
             <% end %>
-            </div>
-            
           </div>
         </article>
         <div class='has-text-right'>
-            <%= link_to 'Cancel', booking_path(@booking), data: {turbo_method: :delete,
-                                                                            turbo_confirm: 'Click OK to confirm.' },
-                                                                            class: 'button is-danger mt-3' %>
-            </div>
+          <%= link_to 'Cancel', booking_path(@booking), data: {turbo_method: :delete,
+                                                               turbo_confirm: 'Click OK to confirm.' },
+                                                               class: 'button is-danger mt-3' %>
+        </div>
       </div>
     </div>
   </div>
