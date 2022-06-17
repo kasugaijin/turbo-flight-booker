@@ -1,15 +1,34 @@
-<h1>Reservation</h1>
-<%= @flight.dept_airport.name %>
-<%= @booking.id %>
-<%= @booking.booking_reference %>
-
-<%# Loop over Active Record Relation is acceptable here as the relation is always small? %>
-<% i = 0 %>
-<% while i < @passengers.length do %>
-  <%= @passengers[i].name %>
-  <%= @passengers[i].email %>
-<% i += 1%>
-<% end %>
-
-<%= link_to 'Cancel Reservation', booking_path(@booking), data: {turbo_method: :delete,
-                                                                turbo_confirm: 'Click OK to confirm.' }%>
+<section class='section'>
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <article class="panel">
+          <p class="panel-heading has-text-centered">Your Reservation</p>
+          <div class="box">
+            <div class='has-text-centered'>
+              <p>Reference #</p>
+              <h4 class='is-size-3 mb-3 has-text-info'><%= @booking.booking_reference %></h4>
+            </div>
+            <p class="has-text-weight-semibold">Passengers</p>
+            <%# Loop over Active Record Relation is acceptable here as the relation is always small? %>
+            <div class='is-flex mb-2'>
+            <% i = 0 %>
+            <% while i < @passengers.length do %>
+              <p class='mr-1'><%= i + 1 %>. </p>
+              <p class='mr-3'><%= @passengers[i].name %>, </p>
+              <p><%= @passengers[i].email %> </p>
+            <% i += 1%>
+            <% end %>
+            </div>
+            
+          </div>
+        </article>
+        <div class='has-text-right'>
+            <%= link_to 'Cancel', booking_path(@booking), data: {turbo_method: :delete,
+                                                                            turbo_confirm: 'Click OK to confirm.' },
+                                                                            class: 'button is-danger mt-3' %>
+            </div>
+      </div>
+    </div>
+  </div>
+</section>
