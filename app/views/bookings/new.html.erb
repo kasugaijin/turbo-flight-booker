@@ -1,23 +1,48 @@
-<h1>Reservation Details</h1>
-<p>From: <%= @flight_details.dept_airport.name %></p>
-<p>To: <%= @flight_details.arr_airport.name %></p>
-<p>Date: <%= @flight_details.date %></p>
-<p>Time: <%= @flight_details.time %></p>
-<p>Duration: <%= @flight_details.duration %> min</p>
+<section class='section'>
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <article class="panel">
+          <p class="panel-heading has-text-centered">Flight Details</p>
+          <div class="box">
+            <div class='result-col'>
+              <div class="result">
+                <p class="has-text-weight-semibold">Departing</p>
+                <%= @flight_details.dept_airport.name %>
+              </div>
 
-<%= form_with model: @booking do |f| %>
-  <%= f.hidden_field :flight_id, value: params[:flight_id] %>
-  <%= f.hidden_field :booking_reference, value: @booking_reference %> 
-  <p>Enter passenger details below</p>
+              <div class="result">
+                <p class="has-text-weight-semibold">Arriving</p>
+                <%= @flight_details.arr_airport.name %>
+              </div>
 
-  <%= f.fields_for :passengers do |passenger_form| %>
-      <%= passenger_form.label :name %>
-      <%= passenger_form.text_field :name%>
-      <%= passenger_form.label :email %>
-      <%= passenger_form.email_field :email%>
-  <% end %>
+              <div class="result">
+                <p class="has-text-weight-semibold">Date</p>
+                <%= @flight_details.date %>
+              </div>
 
-  <%= f.submit 'Submit' %>
-<% end %>
+              <div class="result">
+                <p class="has-text-weight-semibold">Take-off</p>
+                <%= @flight_details.time %>
+              </div>
 
-<%= params %>
+              <div class="result">
+                <p class="has-text-weight-semibold">Duration</p>
+                <p><%= @flight_details.duration %> min </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+     
+<section class='section'>
+  <div class="container">
+    <div class="columns is-centered">
+        <%= render 'passenger_form' %>
+    </div>
+  </div>
+</section
+

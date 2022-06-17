@@ -10,29 +10,29 @@
           <div class="content">
             <div class='result-col'>
               <div class="result">
-                <p>Departing</p>
+                <p class="has-text-weight-semibold">Departing</p>
                 <%= flight.dept_airport.name%>
               </div>
 
               <div class="result">
-                <p>Arriving</p>
+                <p class="has-text-weight-semibold">Arriving</p>
                 <%= flight.arr_airport.name%>
               </div>
 
               <div class="result">
-                <p>Date</p>
+                <p class="has-text-weight-semibold">Date</p>
                 <%= flight.date%>
               </div>
 
               <div class="result">
-                <p>Take-off</p>
+                <p class="has-text-weight-semibold">Take-off</p>
                 <%= flight.time%>
               </div>
 
               <div class="result">
                   <%= link_to 'Select', new_booking_path(:flight_id => flight.id, 
-                                                        :passengers => params[:passengers]), 
-                                                        class: 'button is-info' %>
+                                                         :passengers => params[:passengers]), 
+                                                         class: 'button is-info' %>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
       </article>
       <% end %>
     <% else %>
-      <p>Please make a new search</p>
+      <p>Please make a new search.</p>
     <% end %>
   </div>
 </div>
