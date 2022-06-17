@@ -9,13 +9,19 @@
         <div class="media-content">
           <div class="content">
             <div class='result-col'>
+
               <div class="result">
-                <p class="has-text-weight-semibold">Departing</p>
+                  <p class="has-text-weight-semibold">Aircraft</p>
+                  <%= flight.aircraft%>
+                </div>
+
+              <div class="result">
+                <p class="has-text-weight-semibold">Depart</p>
                 <%= flight.dept_airport.name%>
               </div>
 
               <div class="result">
-                <p class="has-text-weight-semibold">Arriving</p>
+                <p class="has-text-weight-semibold">Arrive</p>
                 <%= flight.arr_airport.name%>
               </div>
 
@@ -25,8 +31,13 @@
               </div>
 
               <div class="result">
-                <p class="has-text-weight-semibold">Take-off</p>
+                <p class="has-text-weight-semibold">Time</p>
                 <%= flight.time%>
+              </div>
+
+              <div class="result">
+                <p class="has-text-weight-semibold">Duration</p>
+                <p><%= flight.duration%> min</p>
               </div>
 
               <div class="result">

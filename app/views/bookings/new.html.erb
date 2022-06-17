@@ -6,6 +6,12 @@
           <p class="panel-heading has-text-centered">Flight Details</p>
           <div class="box">
             <div class='result-col'>
+              
+              <div class="result">
+                <p class="has-text-weight-semibold">Aircraft</p>
+                <%= @flight_details.aircraft %>
+              </div>
+
               <div class="result">
                 <p class="has-text-weight-semibold">Departing</p>
                 <%= @flight_details.dept_airport.name %>

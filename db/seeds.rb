@@ -20,40 +20,40 @@ airports.each do |name, symbol|
 end
 
 Flight.create([
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 1, arr_airport_id: 2, date: DateTime.new(2023, 7, 1), time: '09:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 2, arr_airport_id: 1, date: DateTime.new(2023, 7, 1), time: '11:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 1, arr_airport_id: 2, date: DateTime.new(2023, 7, 1), time: '13:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 2, arr_airport_id: 1, date: DateTime.new(2023, 7, 1), time: '15:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 1, arr_airport_id: 2, date: DateTime.new(2023, 7, 2), time: '09:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 2, arr_airport_id: 1, date: DateTime.new(2023, 7, 2), time: '11:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 1, arr_airport_id: 2, date: DateTime.new(2023, 7, 2), time: '13:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 2, arr_airport_id: 1, date: DateTime.new(2023, 7, 2), time: '15:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 1, arr_airport_id: 2, date: DateTime.new(2023, 7, 3), time: '09:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 2, arr_airport_id: 1, date: DateTime.new(2023, 7, 3), time: '11:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 1, arr_airport_id: 2, date: DateTime.new(2023, 7, 3), time: '13:00'
     },
-    { number: 'BA123', duration: 55, aircraft: 'Airbus A319',
+    { number: 'BA123', duration: 55, aircraft: 'A319',
       dept_airport_id: 2, arr_airport_id: 1, date: DateTime.new(2023, 7, 3), time: '15:00'
     }
 ])
