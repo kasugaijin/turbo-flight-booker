@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @flight_details = Flight.find_by(params[:flight_id])
+    @flight_details = Flight.find(params[:flight_id])
     params[:passengers].to_i.times { @booking.passengers.build }
 
     @booking_reference = booking_ref_generator
