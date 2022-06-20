@@ -21,7 +21,7 @@ View Live:
 
 
 Screenshot:
-![Screenshot](./screenshot.png?raw=true "")
+![Screenshot](./screensht.png?raw=true "")
 
 
 
