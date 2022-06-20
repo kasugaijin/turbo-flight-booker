@@ -42,7 +42,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = Booking.find_by(params[:id])
+    @booking = Booking.find(params[:id])
     if @booking.destroy
       flash.notice = 'Reservation cancelled.'
     else
