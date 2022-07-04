@@ -1,6 +1,6 @@
 # README
 
-This Ruby on Rails application is a flight reservation system that uses advanced forms to work with multiple models simultaneously and allow a user to reserve a flight.
+This Ruby on Rails application is a flight reservation system that uses advanced forms to work with multiple models simultaneously and allow a user to reserve a flight. It also makes use of Turbo frames and Turbo Stream to allow passesngers to be added to the booking form without a page refresh. 
 
 There are four models:
 - Airport
