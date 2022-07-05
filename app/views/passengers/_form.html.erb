@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "passenger_#{form.index}" do %>
+<%= turbo_frame_tag "passenger_#{passenger_form.index}" do %>
   <div class="content">
     <div class='result-col'>
         <%= passenger_form.hidden_field :id %>
@@ -8,5 +8,11 @@
         <%= passenger_form.email_field :email, class: 'my-2 mx-3 input' %>
     </div>
   </div>
+
+  <%= passenger_form.submit "Remove Passenger", 
+        formaction: passenger_path(passenger_form.index, passenger_form.object.id), 
+        formmethod: :delete, 
+        formnovalidate: true, 
+        data: { turbo_frame: "passenger_#{passenger_form.index}" } %>
 <% end %>
      

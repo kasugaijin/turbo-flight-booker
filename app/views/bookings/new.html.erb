@@ -17,6 +17,12 @@
                       <%= render partial: 'passengers/form', locals: { passenger_form: passenger_form} %>
                     <% end %>
                   </div>
+
+                  <%= form.submit "Add Passenger", 
+                        formaction: passenger_path(@booking.passengers.size), 
+                        formmethod: :post, 
+                        formnovalidate: true, 
+                        id: "add-passenger" %>
                   
               </article>
             <div class='has-text-right'>

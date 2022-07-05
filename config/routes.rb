@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   resources :passengers, only: [], param: :index do
     member do
-      delete '(:id)' => "passengers#destroy", as: ""
+      delete '(:id)' => 'passengers#destroy', as: ''
+      post '/' => 'passengers#create'
     end
   end
-
 end

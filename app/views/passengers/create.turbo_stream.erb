@@ -1,0 +1,15 @@
+<%= fields model: @booking do |form| %>
+  <%= form.fields_for :passengers, child_index: params[:index] do |passenger_form| %>
+    <%= turbo_stream.replace "add-passenger" do %>
+      <%= form.submit "Add Passenger", 
+            formaction: passenger_path(passenger_form.index.to_i + 1), 
+            formmethod: :post, 
+            formnovalidate: true, 
+            id: "add-passenger" %>
+    <% end %>
+
+    <%= turbo_stream.append "passengers" do %>
+      <%= render partial: 'form', locals: { passenger_form: passenger_form} %>
+    <% end %>
+  <% end %>
+<% end %>
