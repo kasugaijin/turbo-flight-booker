@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   root 'flights#index'
   resources :bookings
   get '/search', to: 'bookings#search'
+
+  resources :passengers, only: [], param: :index do
+    member do
+      delete '(:id)' => "passengers#destroy", as: ""
+    end
+  end
 
 end
