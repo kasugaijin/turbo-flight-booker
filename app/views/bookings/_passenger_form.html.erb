@@ -5,6 +5,7 @@
     <%= f.hidden_field :booking_reference, value: @booking_reference %> 
     <article class="panel">
       <p class="panel-heading has-text-centered mb-2">Passenger Details</p>
+      
       <%= f.fields_for :passengers do |passenger_form| %>
       <article class="media">
         <div class="media-content">
@@ -19,7 +20,7 @@
  
       <% end %>  
         
-    </article>
+      </article>
     <div class='has-text-right'>
     <%= f.submit 'Reserve', class: 'button is-info m-4' %>
     </div>
