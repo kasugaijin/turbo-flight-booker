@@ -1,9 +1,15 @@
 class PassengersController < ApplicationController
+  before_action :setup_booking
+  
   def destroy
-    @booking = Booking.new(passengers: [Passenger.new])
   end
 
   def new
+  end
+
+  private
+
+  def setup_booking
     @booking = Booking.new(passengers: [Passenger.new])
   end
 end
