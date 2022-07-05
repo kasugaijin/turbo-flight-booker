@@ -1,9 +1,8 @@
 class BookingsController < ApplicationController
 
   def new
-    @booking = Booking.new
+    @booking = Booking.new(passengers: [Passenger.new])
     @flight_details = Flight.find(params[:flight_id])
-    @booking.passengers.build
 
     @booking_reference = booking_ref_generator
   end
@@ -56,7 +55,7 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:flight_id,
                                     :booking_reference,
-                                    passengers_attributes: [:id, :name, :email] )
+                                    passengers_attributes: [:id, :name, :email])
   end
 
   def create_error

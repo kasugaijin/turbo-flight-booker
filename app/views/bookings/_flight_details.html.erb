@@ -1,0 +1,45 @@
+<section class='section'>
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <article class="panel">
+          <p class="panel-heading has-text-centered">Flight Details</p>
+          <div class="box">
+            <div class='result-col'>
+              
+              <div class="result">
+                <p class="has-text-weight-semibold">Aircraft</p>
+                <%= @flight_details.aircraft %>
+              </div>
+
+              <div class="result">
+                <p class="has-text-weight-semibold">Departing</p>
+                <%= @flight_details.dept_airport.name %>
+              </div>
+
+              <div class="result">
+                <p class="has-text-weight-semibold">Arriving</p>
+                <%= @flight_details.arr_airport.name %>
+              </div>
+
+              <div class="result">
+                <p class="has-text-weight-semibold">Date</p>
+                <%= @flight_details.date %>
+              </div>
+
+              <div class="result">
+                <p class="has-text-weight-semibold">Take-off</p>
+                <%= @flight_details.time %>
+              </div>
+
+              <div class="result">
+                <p class="has-text-weight-semibold">Duration</p>
+                <p><%= @flight_details.duration %> min </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

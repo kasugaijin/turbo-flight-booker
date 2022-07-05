@@ -1,53 +1,31 @@
-<section class='section'>
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <article class="panel">
-          <p class="panel-heading has-text-centered">Flight Details</p>
-          <div class="box">
-            <div class='result-col'>
-              
-              <div class="result">
-                <p class="has-text-weight-semibold">Aircraft</p>
-                <%= @flight_details.aircraft %>
-              </div>
-
-              <div class="result">
-                <p class="has-text-weight-semibold">Departing</p>
-                <%= @flight_details.dept_airport.name %>
-              </div>
-
-              <div class="result">
-                <p class="has-text-weight-semibold">Arriving</p>
-                <%= @flight_details.arr_airport.name %>
-              </div>
-
-              <div class="result">
-                <p class="has-text-weight-semibold">Date</p>
-                <%= @flight_details.date %>
-              </div>
-
-              <div class="result">
-                <p class="has-text-weight-semibold">Take-off</p>
-                <%= @flight_details.time %>
-              </div>
-
-              <div class="result">
-                <p class="has-text-weight-semibold">Duration</p>
-                <p><%= @flight_details.duration %> min </p>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
+ <%= render 'flight_details' %>
      
 <section class='section'>
   <div class="container">
     <div class="columns is-centered">
-        <%= render 'passenger_form' %>
+        <div class="column is-half">
+          <%= form_with model: @booking do |form| %>
+            <%= form.hidden_field :flight_id, value: params[:flight_id] %>
+            <%= form.hidden_field :booking_reference, value: @booking_reference %> 
+            <article class="panel">
+              <p class="panel-heading has-text-centered mb-2">Passenger Details</p>
+              
+              <h4>Passengers</h4>
+              <div id='passengers'>
+                <%= form.fields_for :passengers do |passenger_form| %>
+                  <%= render 'passengers/form', form: passenger_form %>
+                <% end %>
+              </div>
+                  
+            </article>
+            <div class='has-text-right'>
+            <%= form.submit 'Reserve', class: 'button is-info m-4' %>
+            </div>
+          <% end %>
+          </article>
+        
+  </div>
+</div>
     </div>
   </div>
 </section
