@@ -9,15 +9,16 @@
             <%= form.hidden_field :booking_reference, value: @booking_reference %> 
             <article class="panel">
               <p class="panel-heading has-text-centered mb-2">Passenger Details</p>
-              
-              <h4>Passengers</h4>
-              <div id='passengers'>
-                <%= form.fields_for :passengers do |passenger_form| %>
-                  <%= render 'passengers/form', form: passenger_form %>
-                <% end %>
-              </div>
+              <article class="media">
+                <div class="media-content">
+
+                  <div id='passengers'>
+                    <%= form.fields_for :passengers do |passenger_form| %>
+                      <%= render partial: 'passengers/form', locals: { passenger_form: passenger_form} %>
+                    <% end %>
+                  </div>
                   
-            </article>
+              </article>
             <div class='has-text-right'>
             <%= form.submit 'Reserve', class: 'button is-info m-4' %>
             </div>
