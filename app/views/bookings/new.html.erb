@@ -18,10 +18,11 @@
                     <% end %>
                   </div>
 
-                  <%= form.submit "Add Passenger", 
+                  <%= form.submit "Add", 
                         formaction: passenger_path(@booking.passengers.size), 
                         formmethod: :post, 
-                        formnovalidate: true, 
+                        # formnovalidate: true,
+                        class: 'button is-success is-small add-pass', 
                         id: "add-passenger" %>
                   
               </article>

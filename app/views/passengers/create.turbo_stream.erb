@@ -1,10 +1,11 @@
 <%= fields model: @booking do |form| %>
   <%= form.fields_for :passengers, child_index: params[:index] do |passenger_form| %>
     <%= turbo_stream.replace "add-passenger" do %>
-      <%= form.submit "Add Passenger", 
+      <%= form.submit "Add", 
             formaction: passenger_path(passenger_form.index.to_i + 1), 
             formmethod: :post, 
-            formnovalidate: true, 
+            # formnovalidate: true,
+            class: 'button is-success is-small add-pass', 
             id: "add-passenger" %>
     <% end %>
 

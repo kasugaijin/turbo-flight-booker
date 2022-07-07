@@ -6,13 +6,14 @@
         <%= passenger_form.text_field :name, class: 'my-2 mx-3 input' %>
         <%= passenger_form.label :email, class: 'my-2 mx-3 label' %>
         <%= passenger_form.email_field :email, class: 'my-2 mx-3 input' %>
-    </div>
-  </div>
 
-  <%= passenger_form.submit "Remove Passenger", 
+  <%= passenger_form.submit "Remove", 
         formaction: passenger_path(passenger_form.index, passenger_form.object.id), 
         formmethod: :delete, 
-        formnovalidate: true, 
+        # formnovalidate: true,
+        class: 'button is-danger is-inverted',
         data: { turbo_frame: "passenger_#{passenger_form.index}" } %>
+         </div>
+  </div>
 <% end %>
      
