@@ -12,7 +12,7 @@
               <article class="media">
                 <div class="media-content">
 
-                  <div id='passengers'>
+                  <div id='passengers', data-controller="remove">
                     <%= form.fields_for :passengers do |passenger_form| %>
                       <%= render partial: 'passengers/form', locals: { passenger_form: passenger_form} %>
                     <% end %>
