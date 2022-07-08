@@ -9,4 +9,6 @@ export default class extends Controller {
   }
 }
 
-// connect runs every time a new turbo frame is created
+// connect runs automatically every time a new controller object is made i.e. every new turbo frame
+// buttonTarget = targets the first element of the target - i.e. first passenger form
+// buttonTargets = targets all elements of the target
