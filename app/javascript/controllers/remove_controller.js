@@ -4,8 +4,7 @@ export default class extends Controller {
   static targets = ['button']
 
   connect() {
-      this.buttonTarget.style.color = "white";
-      this.buttonTarget.disabled = true;
+      this.buttonTarget.parentNode.removeChild(this.buttonTarget)
   }
 }
 

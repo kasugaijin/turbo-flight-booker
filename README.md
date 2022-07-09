@@ -1,6 +1,6 @@
 # README
 
-This Ruby on Rails application is a flight reservation system that uses advanced forms to work with multiple models simultaneously and allow a user to reserve a flight. It also makes use of Turbo frames and Turbo Stream to allow passengers to be added to the booking form without a page refresh. 
+This Ruby on Rails application is a flight reservation system that uses a nested form to work with multiple models simultaneously and allow a user to select a flight and add passenger details to make a reservation. Turbo frames/streams allows passenger fields to be added/removed on the booking form without a page refresh. Stimulus JS was used to hide the 'remove' button on the first passenger field. Turbo frames also makes the 'Search Reservation' feature feel like a single page application by showing a reservation without a page reload.
 
 There are four models:
 - Airport
@@ -15,8 +15,13 @@ In the database, the Bookings Table is a through table for Flights and Passenger
 - Form 3: Enter passenger information
 - Form 4: Search feature to search reservations by reference #
 
-Improvements
-User feedback when filling in forms would be improved through the use of javascript to ensure fields were filled in appropriately. Currently, this app relies on validations on the server side, which requires a click, a page load, and time to provide a generic response to the user. Using javascript would enable real-time feedback without the need for any button clicks or page loads.
+**Bugs & Improvements**
+The search form makes use of turbo frames to instantly render the show page of the booking that matches the booking reference searched. However, if an invalid booking reference is entered, the redirect + flash in the Bookings#search method does not execute until you manually refresh the page. This is a known issue in Turbo Streams right now, with some 'workarounds' but no concrete fix by Turbo as of writing this. See:  https://github.com/hotwired/turbo/issues/138#issuecomment-781214846 
+
+I decided to leave this as is to practice, experience turbo frames when it is working properly. However, in a production app I would either implement a patch, or remove the Turbo frame and use another JS framework should SPA functionality be required.
+
+From a design perspective, the passenger form fields could all be aligned. The first field is misaligned with subsequent added fields due to the 'remove' button.
+
 
 View Live: https://shielded-taiga-80011.herokuapp.com/
 
