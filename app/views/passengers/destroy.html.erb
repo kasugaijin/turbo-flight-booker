@@ -3,7 +3,6 @@
     <%= turbo_frame_tag "passenger_#{passenger_form.index}" do %>
       <%= passenger_form.hidden_field :id, value: params[:id] %>
       <%= passenger_form.hidden_field :_destroy, value: true %>
-      
     <% end %>
   <% end %>
 <% end %>
