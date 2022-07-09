@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-    @flight = Flight.find(@booking.flight_id)
+    @flight_details = Flight.find(@booking.flight_id)
     @passengers = Passenger.where(booking_id: @booking.id)
   end
 

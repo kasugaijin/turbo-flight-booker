@@ -14,7 +14,8 @@
 
                   <div id='passengers', data-controller="remove">
                     <%= form.fields_for :passengers do |passenger_form| %>
-                      <%= render partial: 'passengers/form', locals: { passenger_form: passenger_form} %>
+                      <%= render partial: 'passengers/form', 
+                                          locals: { passenger_form: passenger_form} %>
                     <% end %>
                   </div>
 
@@ -26,12 +27,11 @@
                         id: "add-passenger" %>
                   
               </article>
-            <div class='has-text-right'>
-            <%= form.submit 'Reserve', class: 'button is-info m-4' %>
-            </div>
+              <div class='has-text-right'>
+              <%= form.submit 'Reserve', class: 'button is-info m-4' %>
+              </div>
           <% end %>
             </article>
-        
           </div>
         </div>
     </div>
