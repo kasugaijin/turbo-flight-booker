@@ -16,9 +16,11 @@ In the database, the Bookings Table is a through table for Flights and Passenger
 - Form 4: Search feature to search reservations by reference #
 
 **Bugs & Improvements**
-The search form makes use of turbo frames to instantly render the show page of the booking that matches the booking reference searched. However, if an invalid booking reference is entered, the redirect + flash in the Bookings#search method does not execute until you manually refresh the page. This is a known issue in Turbo Streams right now, with some 'workarounds' but no concrete fix by Turbo as of writing this. See:  https://github.com/hotwired/turbo/issues/138#issuecomment-781214846 
+The search form makes use of turbo frames to instantly render the show page of the booking that matches the booking reference searched. The 'Cancel' button for the reservation breaks out of the Turbo stream by setting its data target to _top, which enables the cancellation feature to work.
 
-I decided to leave this as is to practice, experience turbo frames when it is working properly. However, in a production app I would either implement a patch, or remove the Turbo frame and use another JS framework should SPA functionality be required.
+However, if an invalid booking reference is entered, the redirect + flash in the Bookings#search method does not execute until you manually refresh the page. This is a known issue in Turbo Streams right now, with some 'workarounds' but no concrete fix by Turbo as of writing this. See:  https://github.com/hotwired/turbo/issues/138#issuecomment-781214846 
+
+I decided to leave this as is to practice, experience turbo frames when it is working properly. However, in a production app I would either implement a patch, or remove the Turbo frame and use another JS framework should SPA functionality be required. I am currently experimenting with solutions to this issue, incuding having the flash within the turbo frame, or removing the use of a flash and rendering html stating record not found within the turbo frame.
 
 From a design perspective, the passenger form fields could all be aligned. The first field is misaligned with subsequent added fields due to the 'remove' button.
 
