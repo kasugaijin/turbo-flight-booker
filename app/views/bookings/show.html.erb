@@ -1,42 +1,42 @@
-<%= turbo_frame_tag 'search' do %>
-  <section class='section reso-section'>
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-one-third">
-          <article class="panel">
-            <p class="panel-heading has-text-centered">Your Reservation</p>
-            <div class="box">
-              <div class='has-text-centered'>
-                <p>Reference #</p>
-                <h4 class='is-size-3 mb-3 has-text-info'><%= @booking.booking_reference %></h4>
-              </div>
-              <div>
-              <p class="has-text-weight-semibold">Passengers</p>
-              <%# Loop over Active Record Relation is acceptable here as the relation is always small? %>
-              <% i = 0 %>
-              <% while i < @passengers.length do %>
-                <div class='is-flex mb-2'>
-                  <p class='mr-1'><%= i + 1 %>. </p>
-                  <p class='mr-3'><%= @passengers[i].name %>, </p>
-                  <p><%= @passengers[i].email %> </p>
-                </div>
-              <% i += 1%>
-              <% end %>
-              </div>
+<section class='section reso-section'>
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <article class="panel">
+          <p class="panel-heading has-text-centered">Your Reservation</p>
+          <div class="box">
+            <div class='has-text-centered'>
+              <p>Reference #</p>
+              <h4 class='is-size-3 mb-3 has-text-info'><%= @booking.booking_reference %></h4>
             </div>
-          </article>
+            <div>
+            <p class="has-text-weight-semibold">Passengers</p>
+            <%# Loop over Active Record Relation is acceptable here as the relation is always small? %>
+            <% i = 0 %>
+            <% while i < @passengers.length do %>
+              <div class='is-flex mb-2'>
+                <p class='mr-1'><%= i + 1 %>. </p>
+                <p class='mr-3'><%= @passengers[i].name %>, </p>
+                <p><%= @passengers[i].email %> </p>
+              </div>
+            <% i += 1%>
+            <% end %>
+            </div>
           </div>
+        </article>
         </div>
       </div>
     </div>
-  </section>
-
-  <%= render 'flight_details' %>
-
-  <div class= 'columns is-centered'>
-  <%= link_to 'Cancel', booking_path(@booking), data: {turbo_method: :delete,
-                                                      turbo_confirm: 'Click OK to confirm.',
-                                                      turbo_frame: '_top' },
-                                                      class: 'button is-danger mt-3' %>
   </div>
-<% end %>
+</section>
+
+<%= render 'flight_details' %>
+
+<div class= 'columns is-centered'>
+<%= link_to 'Cancel', booking_path(@booking), data: {turbo_method: :delete,
+                                                    turbo_confirm: 'Click OK to confirm.',
+                                                    turbo_frame: '_top' },
+                                                    class: 'button is-danger mt-3' %>
+</div>
+
+

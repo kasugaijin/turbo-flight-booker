@@ -37,6 +37,10 @@
    justify-content: space-around;
  }
 
+ .passengers {
+  display: flex;
+ }
+
  .result > p {
    margin-bottom: 0 !important;
  }
