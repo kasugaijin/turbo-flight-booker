@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     else
       @booking = Booking.create(booking_params)
       if @booking.save
-        flash.notice = 'Reservation Saved!'
+        flash.notice = 'Reservation saved & confirmation email sent.'
         redirect_to @booking
       else
         create_error
