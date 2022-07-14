@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     else
       @booking = Booking.create(booking_params)
       if @booking.save
+        PassengerMailer.with(booking: @booking).reservation_email.deliver_now
         flash.notice = 'Reservation saved & confirmation email sent.'
         redirect_to @booking
       else
