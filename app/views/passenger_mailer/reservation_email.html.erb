@@ -4,15 +4,17 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Your reservation is complete </h1>
-    <p>
-      You have successfully booked your flight. 
-      Your reservation reference is: <%= @booking.booking_reference %><br>
-      Your flight time is <%= @flight_details.time %>
-    </p>
-    <p>
-      To search google, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <h1>ReservAir</h1>
+    <h3>You have successfully reserved your flight!<h3> 
+    <h4>Reference #: <%= @booking.booking_reference %><h4>
+
+    <p>Departure time: <%= @flight_details.time %></p>
+    <p>Departing from: <%= @flight_details.dept_airport.name %></p>
+    <p>Arriving at: <%= @flight_details.arr_airport.name %></p>
+    
+    
+    <p>Search your booking at: <a href="<%= @url %>">ReservAir Search</a></p>
+    <p>Thanks for reserving with us. Have a great day!</p>
+    <h3>ReservAir Team</h3>
   </body>
 </html>

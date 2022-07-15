@@ -5,11 +5,9 @@ class PassengerMailer < ApplicationMailer
     @booking = params[:booking]
     @passengers = params[:passengers]
     @flight_details = params[:flight_details]
-    @url = 'https://www.google.com'
-    
-    @passengers.each do |passenger|
-      mail(to: passenger.email, subject: 'Reservation Complete')
-    end
+    @url = 'http://localhost:3000/search'
 
+    emails = @passengers.collect(&:email).join(",")
+    mail(to: emails, subject: 'Reservation Complete')
   end
 end

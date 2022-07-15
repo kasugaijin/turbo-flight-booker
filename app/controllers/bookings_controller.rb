@@ -18,7 +18,9 @@ class BookingsController < ApplicationController
 
         @passengers = passengers(@booking)
         @flight_details = flight_details(@booking)
-        PassengerMailer.with(booking: @booking, passengers: @passengers, flight_details: @flight_details ).reservation_email.deliver_now
+        PassengerMailer.with(booking: @booking,
+                             passengers: @passengers,
+                             flight_details: @flight_details).reservation_email.deliver_now
         # args passed to .with create params for the mailer
       else
         create_error
@@ -73,10 +75,10 @@ class BookingsController < ApplicationController
   end
 
   def passengers(booking)
-    @passengers = Passenger.where(booking_id: @booking.id)
+    Passenger.where(booking_id: booking.id)
   end
 
   def flight_details(booking)
-    Flight.find(@booking.flight_id)
+    Flight.find(booking.flight_id)
   end
 end
