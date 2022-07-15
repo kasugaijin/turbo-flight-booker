@@ -16,12 +16,11 @@ class BookingsController < ApplicationController
         flash.notice = 'Reservation saved & confirmation email sent.'
         redirect_to @booking
 
-        @passengers = passengers(@booking)
-        @flight_details = flight_details(@booking)
-        PassengerMailer.with(booking: @booking,
-                             passengers: @passengers,
-                             flight_details: @flight_details).reservation_email.deliver_now
-        # args passed to .with create params for the mailer
+        # @passengers = passengers(@booking)
+        # @flight_details = flight_details(@booking)
+        # PassengerMailer.with(booking: @booking,
+        #                      passengers: @passengers,
+        #                      flight_details: @flight_details).reservation_email.deliver_now
       else
         create_error
       end
@@ -38,7 +37,6 @@ class BookingsController < ApplicationController
     return if params[:search].blank?
 
     @booking = Booking.where(booking_reference: params[:search].upcase)[0]
-
     if @booking.nil?
       flash.alert = 'Reservation does not exist'
       redirect_to search_path
@@ -51,6 +49,10 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     if @booking.destroy
       flash.notice = 'Reservation cancelled.'
+
+      @passengers = passengers(@booking)
+      PassengerMailer.with(booking: @booking,
+                           passengers: @passengers).cancellation_email.deliver_now
     else
       flash.alert = 'Error - reservation was not cancelled'
     end
@@ -81,4 +83,5 @@ class BookingsController < ApplicationController
   def flight_details(booking)
     Flight.find(booking.flight_id)
   end
+
 end
