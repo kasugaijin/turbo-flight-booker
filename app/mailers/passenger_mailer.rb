@@ -3,8 +3,8 @@ class PassengerMailer < ApplicationMailer
 
   def reservation_email
     @booking = params[:booking]
-    @flight_details = Flight.find(@booking.flight_id)
-    @passengers = Passenger.where(booking_id: @booking.id)
+    @passengers = params[:passengers]
+    @flight_details = params[:flight_details]
     @url = 'https://www.google.com'
     
     @passengers.each do |passenger|

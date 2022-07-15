@@ -1,9 +1,10 @@
-<% Your reservation is complete, <%= passenger.name %>
+ Your reservation is complete, 
 ===============================================
 
 You have successfully booked your flight. 
-<% Your reservation reference is: <%= @booking.booking_reference %> 
+Your reservation reference is: <%= @booking.booking_reference %> 
+Your flight time is <%= @flight_details.time %>
 
-To lsearch google, just follow this link: <%= @url %>.
+To search google, just follow this link: <%= @url %>.
 
 Thanks for joining and have a great day!

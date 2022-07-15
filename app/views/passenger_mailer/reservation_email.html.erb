@@ -4,10 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Your reservation is complete <%= passenger.name %></h1>
+    <h1>Your reservation is complete </h1>
     <p>
       You have successfully booked your flight. 
       Your reservation reference is: <%= @booking.booking_reference %><br>
+      Your flight time is <%= @flight_details.time %>
     </p>
     <p>
       To search google, just follow this link: <%= @url %>.

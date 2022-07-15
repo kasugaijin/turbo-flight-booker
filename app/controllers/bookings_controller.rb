@@ -15,7 +15,10 @@ class BookingsController < ApplicationController
       if @booking.save
         flash.notice = 'Reservation saved & confirmation email sent.'
         redirect_to @booking
-        PassengerMailer.with(booking: @booking).reservation_email.deliver_now
+
+        @passengers = passengers(@booking)
+        @flight_details = flight_details(@booking)
+        PassengerMailer.with(booking: @booking, passengers: @passengers, flight_details: @flight_details ).reservation_email.deliver_now
         # args passed to .with create params for the mailer
       else
         create_error
@@ -25,8 +28,8 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-    @flight_details = Flight.find(@booking.flight_id)
-    @passengers = Passenger.where(booking_id: @booking.id)
+    @flight_details = flight_details(@booking)
+    @passengers = passengers(@booking)
   end
 
   def search
@@ -67,5 +70,13 @@ class BookingsController < ApplicationController
 
   def booking_ref_generator
     SecureRandom.hex(3).upcase
+  end
+
+  def passengers(booking)
+    @passengers = Passenger.where(booking_id: @booking.id)
+  end
+
+  def flight_details(booking)
+    Flight.find(@booking.flight_id)
   end
 end
