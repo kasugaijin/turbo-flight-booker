@@ -1,10 +1,15 @@
- Your reservation is complete, 
+Reservation Completed
 ===============================================
 
-You have successfully booked your flight. 
+You have successfully reserved your flight. 
 Your reservation reference is: <%= @booking.booking_reference %> 
 Your flight time is <%= @flight_details.time %>
 
-To search google, just follow this link: <%= @url %>.
+Departure time: <%= @flight_details.time %>
+Departing from: <%= @flight_details.dept_airport.name %>
+Arriving at: <%= @flight_details.arr_airport.name %>
 
-Thanks for joining and have a great day!
+To cancel, search your booking at: <a href="<%= @url %>">ReservAir Search</a>
+Thanks for reserving with us. Have a great day!
+
+-ReservAir Team
