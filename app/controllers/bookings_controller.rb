@@ -16,11 +16,11 @@ class BookingsController < ApplicationController
         flash.notice = 'Reservation saved & confirmation email sent.'
         redirect_to @booking
 
-        # @passengers = passengers(@booking)
-        # @flight_details = flight_details(@booking)
-        # PassengerMailer.with(booking: @booking,
-        #                      passengers: @passengers,
-        #                      flight_details: @flight_details).reservation_email.deliver_now
+        @passengers = passengers(@booking)
+        @flight_details = flight_details(@booking)
+        PassengerMailer.with(booking: @booking,
+                             passengers: @passengers,
+                             flight_details: @flight_details).reservation_email.deliver_now
       else
         create_error
       end
@@ -45,14 +45,15 @@ class BookingsController < ApplicationController
     end
   end
 
+  # save passenger emails before they get deleted and pass to mailer after delete, otherwise nil
   def destroy
     @booking = Booking.find(params[:id])
+    passenger_emails = passengers(@booking).collect(&:email).join(",")
+
     if @booking.destroy
       flash.notice = 'Reservation cancelled.'
-
-      @passengers = passengers(@booking)
       PassengerMailer.with(booking: @booking,
-                           passengers: @passengers).cancellation_email.deliver_now
+                           emails: passenger_emails).cancellation_email.deliver_now
     else
       flash.alert = 'Error - reservation was not cancelled'
     end
@@ -83,5 +84,4 @@ class BookingsController < ApplicationController
   def flight_details(booking)
     Flight.find(booking.flight_id)
   end
-
 end
